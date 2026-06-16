@@ -31,6 +31,8 @@ public class ProductEntity {
     }
 
     public ProductEntity() {
+        // Automatically generate a fallback UUID if instantiated directly [7]
+        this.productId = java.util.UUID.randomUUID().toString();
     }
 
     public ProductEntity(String productId) {

@@ -85,4 +85,18 @@ public class ProductRepository implements IRepository<ProductEntity> {
         if (em != null && em.isOpen()) em.close();
         if (emf != null && emf.isOpen()) emf.close();
     }
+
+    // Add to bookstore.repositories.ProductRepository.java
+    @Override
+    public ProductEntity findByProductId(String productId) {
+        try {
+            return em.createQuery(
+                            "SELECT p FROM ProductEntity p WHERE p.productId = :prodId",
+                            ProductEntity.class)
+                    .setParameter("prodId", productId) // Binds parameter safely
+                    .getSingleResult(); // Returns the single matching record
+        } catch (jakarta.persistence.NoResultException e) {
+            return null; // Return null safely if UUID is not found
+        }
+    }
 }

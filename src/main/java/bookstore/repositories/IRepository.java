@@ -10,4 +10,7 @@ public interface IRepository<T> {
     long count();
     int deleteAll();   // Returns total count of deleted database records
     void close();
+    // Add to bookstore.repositories.IRepository.java
+    T findByProductId(String productId);
+
 }
