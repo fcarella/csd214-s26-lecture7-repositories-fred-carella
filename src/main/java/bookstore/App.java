@@ -427,32 +427,6 @@ public class App {
         }
     }
 
-    //    public SaleableItem findItem(SaleableItem item) {
-//        List<ProductEntity> entities = repository.findAll();
-//
-//        for (ProductEntity entity : entities) {
-//            SaleableItem pojo = null;
-//
-//            if (entity instanceof BookEntity) {
-//                pojo = Book.fromEntity((BookEntity) entity);
-//            } else if (entity instanceof DiscMagEntity) {
-//                pojo = DiscMag.fromEntity((DiscMagEntity) entity);
-//            } else if (entity instanceof MagazineEntity) {
-//                pojo = Magazine.fromEntity((MagazineEntity) entity);
-//            } else if (entity instanceof TicketEntity) {
-//                pojo = Ticket.fromEntity((TicketEntity) entity);
-//            } else if (entity instanceof BatteryEntity) {
-//                pojo = Battery.fromEntity((BatteryEntity) entity);
-//            } else if (entity instanceof TireEntity) {
-//                pojo = Tire.fromEntity((TireEntity) entity);
-//            }
-//
-//            if (pojo != null && pojo.equals(item)) {
-//                return pojo;
-//            }
-//        }
-//        return null;
-//    }
 // ✅ Optimized Database Lookup (Loads exactly 1 row)
     public SaleableItem findItem(SaleableItem item) {
         if (item instanceof Product) {

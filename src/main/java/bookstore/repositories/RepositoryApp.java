@@ -14,8 +14,20 @@ public class RepositoryApp {
 
         try {
             // 2. Create Items
+            // Inside RepositoryApp.java main()
+            System.out.println("\n--- TESTING UNIQUE BUSINESS KEY LOOKUP ---");
+            // Save a book and capture its auto-generated UUID business key [7]
+            ProductEntity saved = repo.save(new BookEntity("Test Driven Development", 39.99, 5, "Kent Beck"));
+            String targetUuid = saved.getProductId();
+            System.out.println("Sending database-level query for UUID: " + targetUuid);
+            // Execute the custom repository lookup [7]
+            ProductEntity found = repo.findByProductId(targetUuid);
+            if (found != null) {
+                System.out.println("Success! Found persistent entity: " + found.getId() + " (UUID: " + found.getProductId() + ")");
+            } else {
+                System.out.println("Error: Entity not found.");
+            }
             System.out.println("\n--- Saving Items ---");
-            repo.save(new BookEntity("Clean Code",45.00,10,"Robert C. Martin"));
             repo.save(new TicketEntity("Java Conference", 299.99));
             repo.save(new DiscMagEntity("Retro Gamer", 15.00, 20, 100, new Date(), true));
 
